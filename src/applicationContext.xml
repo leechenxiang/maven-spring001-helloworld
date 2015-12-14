@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 
+		把一个类放入到spring容器中，该类就称为bean
+	 -->
+	<!-- 
+		描述一个类
+		  id 唯一标示
+		  class  类名
+		  
+	 -->
+	<bean id="helloWorld" class="com.lee.spring001.createobject.HelloWorld"></bean>
+	
+	<!-- 
+		factory-method 是指调用静态工厂方法
+	 -->
+	<bean id="helloWorld2" class="com.lee.spring002.createobject.method.HelloWorldFactory" factory-method="getInstance"></bean>
+	
+	<!-- 
+		实例工厂
+	 -->
+	<bean id="helloWorldFactory" class="com.lee.spring002.createobject.method.HelloWorldFactory2"></bean>
+	<!-- 
+		factory-bean 是一个工厂bean
+	 -->
+	<bean id="helloWorld3" factory-bean="helloWorldFactory" factory-method="getInstance"></bean>
+	
+	<!-- 
+		别名
+		name 属性值要和 id 一致
+	 -->
+	 <alias name="helloWorld3" alias="abc"/>
+	 <alias name="helloWorld3" alias="测试"/>
+	 
+	 <bean id="whenFactory" class="com.lee.spring004.createobject.when.WhenFactory"></bean>
+	 <bean id="when" factory-bean="whenFactory" factory-method="getInstance"></bean>
+	 
+	 <bean id="when2" class="com.lee.spring004.createobject.when.When" lazy-init="true"></bean>
+	 
+	 
+	 <bean id="scope" class="com.lee.spring005.scope.Scope"></bean>
+	 
+	 <!-- 
+	 	singleton: 默认单例
+	 	prototype: 多例
+	 	request ，session和global session: 只适用于web程序
+	  -->
+	 <bean id="scope_prototype" class="com.lee.spring005.scope.Scope" scope="prototype"></bean>
+	 
+</beans>
