@@ -50,4 +50,69 @@
 	  -->
 	 <bean id="scope_prototype" class="com.lee.spring005.scope.Scope" scope="prototype"></bean>
 	 
+	 <!-- 
+	 	destroy-method 一般在数据源的时候用到，关闭容易后就销毁连接
+	  -->
+	 <bean 
+	 	id="initDestory" 
+	 	class="com.lee.spring006.init_destory.InitDestory" 
+	 	init-method="init" 
+	 	destroy-method="destory"
+	 ></bean>
+	 
+	 <!-- 
+	 	依赖注入的装配过程
+	  -->
+	 <bean id="person" class="com.lee.spring007.di.xml.setter.Person">
+	 	<property name="pid" value="1001"></property>
+	 	
+	 	<property name="name" value="nathan"></property>
+	 	
+	 	<property name="stu" ref="student"></property>
+	 	
+	 	<property name="list">
+	 		<list>
+	 			<value>a</value>
+	 			<value>b</value>
+	 			<value>c</value>
+	 			<value>d</value>
+	 			<value>e</value>
+	 		</list>
+	 	</property>
+	 	
+	 	<property name="map">
+	 		<map>
+	 			<entry key="number" value="111"></entry>
+	 			<entry key="bean" value-ref="student"></entry>
+	 		</map>
+	 	</property>
+	 	
+	 	<property name="properties">
+	 		<props>
+	 			<prop key="one">111</prop>
+	 			<prop key="two">222</prop>
+	 			<prop key="three">333</prop>
+	 		</props>
+	 	</property>
+	 	
+	 	<property name="sets">
+	 		<set>
+	 			<value>11</value>
+	 			<ref bean="student"/>
+	 		</set>
+	 	</property>
+	 	
+	 	<property name="obj">
+	 		<list>
+	 			<value>a</value>
+	 			<value>b</value>
+	 			<value>c</value>
+	 			<value>d</value>
+	 			<value>e</value>
+	 		</list>
+	 	</property>
+	 	
+	 </bean>
+	 <bean id="student" class="com.lee.spring007.di.xml.setter.Student"></bean>
+	 
 </beans>
