@@ -10,7 +10,6 @@
 		描述一个类
 		  id 唯一标示
 		  class  类名
-		  
 	 -->
 	<bean id="helloWorld" class="com.lee.spring001.createobject.HelloWorld"></bean>
 	
@@ -114,5 +113,15 @@
 	 	
 	 </bean>
 	 <bean id="student" class="com.lee.spring007.di.xml.setter.Student"></bean>
+	 
+	 
+	 <bean id="docManger" class="com.lee.spring008.IOC.DI.meaning.DocManger">
+	 	<!-- 这个属性是接口 -->
+	 	<property name="doc" ref="word"></property>
+	 </bean>
+	 <bean id="word" class="com.lee.spring008.IOC.DI.meaning.Word"></bean>
+	 <bean id="excel" class="com.lee.spring008.IOC.DI.meaning.Excel"></bean>
+	 <bean id="pdf" class="com.lee.spring008.IOC.DI.meaning.Pdf"></bean>
+	 
 	 
 </beans>
