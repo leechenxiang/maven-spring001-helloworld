@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+           
 	<!-- 把一个类放入到spring容器中，该类就称为bean -->
 	<!-- 描述一个类 id 唯一标示 class 类名 -->
 	<bean id="helloWorld" class="com.lee.spring001.createobject.HelloWorld"></bean>
@@ -109,4 +113,28 @@
 	</bean>
 	<bean id="stuDAO" class="com.lee.spring008.IOC.DI.MVC.StuDAOImpl"></bean>
 
+	<!-- 
+		实现spring的继承
+	 -->
+	<bean id="personExtend" class="com.lee.spring009.extend.Person">
+		<property name="name" value="nathan.lee"></property>
+	</bean>
+	<bean id="studentExtend" class="com.lee.spring009.extend.Student" parent="personExtend"></bean>
+	<!-- 子类继承父类，直接赋值 -->
+	<bean id="studentExtend2" class="com.lee.spring009.extend.Student" parent="personExtend">
+		<property name="name" value="abc"></property>
+	</bean>
+
+
+	<!-- 
+		spring annotation
+	 -->
+	 <bean id="personA" class="com.lee.spring010.DI.annotation.Person"></bean>
+	 <bean id="studentA" class="com.lee.spring010.DI.annotation.Student"></bean>
+	 
+	<!-- 
+   		启动依赖注入的注解解析器
+    -->
+	<context:annotation-config></context:annotation-config>
+	    
 </beans>
